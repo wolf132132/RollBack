@@ -4,6 +4,7 @@ db = sqlite3.connect("accounts.sqlite")
 db.execute("CREATE TABLE IF NOT EXISTS accounts (name TEXT PRIMARY KEY NOT NULL, balance INTEGER NOT NULL)")
 db.execute("CREATE TABLE IF NOT EXISTS transactions (time TIMESTAMP NOT NULL, account TEXT NOT NULL, amount INTEGER NOT NULL, PRIMARY KEY (time, account))")
 
+
 class Account():
 
     def __init__(self, name: str, open_balance: int = 0):
@@ -44,3 +45,9 @@ if __name__ == '__main__':
     john.deposit(1000)
     john.withdraw(80)
     john.show_balance()
+
+    terry = Account("TerryG")
+    graham = Account("Graham", 9000)
+    eric = Account("Eric", 7000)
+
+    db.close()
